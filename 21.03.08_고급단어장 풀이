@@ -1,0 +1,34 @@
+1. 사전 정리
+우선 vocabulary.txt 파일을 읽고, 파이썬 사전을 채워 넣겠습니다.
+
+vocab = {}
+with open('vocabulary.txt', 'r') as f:
+    for line in f:
+        data = line.strip().split(": ")
+        english_word, korean_word = data[0], data[1]
+        vocab[english_word] = korean_word
+이렇게 하면 파일에 있는 단어와 뜻이 모두 vocab 사전에 정리되겠죠?
+
+영어 단어 목록을 받아오려면 파이썬 사전의 keys를 사용하면 되는데요. keys라는 변수에 저장해 줍시다.
+
+keys = list(vocab.keys())
+
+2. 문제 내기
+문제를 내는 부분은 코드가 조금 더 복잡합니다. 이 중에서도 가장 헷갈릴 만한 부분은 랜덤한 문제를 받아오는 것입니다.
+
+우선 한국어 단어는 배제하고 생각해 봅시다.
+
+random 모듈의 randint 함수를 이용해서 랜덤한 인덱스를 받는다.
+그 랜덤한 인덱스를 통해 vocab.keys() 리스트에서 단어를 받는다.
+코드로 표현하면 이렇습니다.
+
+index = random.randint(0, len(keys) - 1)
+english_word = keys[index]
+그리고 이제 이에 해당하는 한국어 뜻을 받아오는 것은 너무 쉽습니다.
+
+korean_word = vocab[english_word]
+나머지 부분은 앞선 실습 과제랑 거의 똑같습니다.
+
+유저에게 단어를 입력 받는다.
+만약 유저가 q를 입력했으면 프로그램을 종료한다.
+유저가 입력한 영어 단어가 정답인지 확인한다.
